@@ -44,9 +44,9 @@ public int binarySearch(int catNumToFind)
           if (store[guess].getCatNum()==catNumToFind)
              { return store[guess].getInventory();}
           else if (store[guess].getCatNum()<catNumToFind)
-              {return low+1;}
+              {return low++;}
           else if (store[guess].getCatNum()>catNumToFind)
-              {return high-1;}
+              {return high--;}
                
     }      
          return -1; 
@@ -54,17 +54,16 @@ public int binarySearch(int catNumToFind)
 public int binarySearch(int catNumToFind,int nLow, int nHigh)
 {
     //complete this method   
-   // int low=0;
-   // int high = store.length-1;
+   
     int guess= (nHigh+nLow)/2;
     if (nHigh>=nLow)
     {
        if (store[guess].getCatNum()==catNumToFind)
           { return store[guess].getInventory();}
        else if (store[guess].getCatNum()<catNumToFind)
-          { return binarySearch(catNumToFind, nLow, nHigh-1);}
-       else if (store[guess].getCatNum()>catNumToFind)
           { return binarySearch(catNumToFind, nLow+1, nHigh);}
+       else if (store[guess].getCatNum()>catNumToFind)
+          { return binarySearch(catNumToFind, nLow+1, nHigh-1);}
        }
  return -1;           
 }
